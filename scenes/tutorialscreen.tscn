@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://cxhx5ugmceera"]
+
+[ext_resource type="Script" uid="uid://dt57q8kcb1a4h" path="res://scripts/tutorialscreen.gd" id="1_4hdnc"]
+[ext_resource type="Texture2D" uid="uid://bmc5qxd7grsyo" path="res://assets/tutorialBG.png" id="2_7rnn5"]
+[ext_resource type="FontFile" uid="uid://bllxedt5cphs2" path="res://assets/fonts/Pixel Game.otf" id="3_8wvpk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh5q6"]
+bg_color = Color(0, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbc1l"]
+bg_color = Color(0.82433593, 0.37901506, 0.91932803, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpip8"]
+bg_color = Color(0.8635871, 0.5582947, 0.68678343, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_222iu"]
+bg_color = Color(0.8923749, 0.44253483, 0.46104681, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dh5q6"]
+
+[node name="TUTORIALSCREEN" type="Control" unique_id=242868283]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4hdnc")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1584791639]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7rnn5")
+
+[node name="textboxes" type="HBoxContainer" parent="TextureRect" unique_id=1107900847]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -883.0
+offset_top = 73.0
+offset_right = 1086.0
+offset_bottom = 1015.0
+grow_horizontal = 2
+theme_override_constants/separation = 400
+
+[node name="scoring" type="Label" parent="TextureRect/textboxes" unique_id=1041170055]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("3_8wvpk")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_dh5q6")
+text = "SCORING
+
+you get 1 point for
+each pillar passed
+
+your highscore is 
+saved, you die if 
+your health is 
+below 10%."
+horizontal_alignment = 1
+
+[node name="controls" type="Label" parent="TextureRect/textboxes" unique_id=107904128]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("3_8wvpk")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_dh5q6")
+text = "CONTROLS
+space : gives you
+up ward thrust
+and prevents you
+from falling.
+
+"
+horizontal_alignment = 1
+
+[node name="backbtn" type="Button" parent="TextureRect" unique_id=194696149]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -126.0
+offset_right = 129.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_8wvpk")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_jbc1l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qpip8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_222iu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dh5q6")
+text = "BACK"
+
+[connection signal="pressed" from="TextureRect/backbtn" to="." method="_on_backbtn_pressed"]
