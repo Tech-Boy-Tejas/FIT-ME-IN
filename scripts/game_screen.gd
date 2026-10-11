@@ -24,6 +24,7 @@ var screen: Vector2
 @onready var healthlabel: Label = $Health
 @onready var start_msgLabel: Label = $startMSG
 @onready var menu_btn: Button = $menuBtn
+@onready var prompt_msgLabel: Label = $promptMSG
 
 var started := false
 
@@ -40,6 +41,9 @@ func _ready() -> void:
 	healthlabel.text = "HEALTH : 100%"
 	start_msgLabel.text = "PRESS SPACE TO START"
 	start_msgLabel.visible = true
+	prompt_msgLabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	prompt_msgLabel.text = "FIND OUT WHAT HAPPENS WHEN YOU COLLIDE WITH A PILLAR\nSOMETHING CRAZYY"
+	prompt_msgLabel.visible = true
 	
 	sholder.score = 0
 
@@ -73,6 +77,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	start_msgLabel.visible = false
+	prompt_msgLabel.visible = false
 	if blob.alive and blob.position.y > 1080:
 		playing = false
 		var tween = create_tween()
@@ -170,3 +175,4 @@ func _restart() -> void:
 
 func _on_menu_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
+	

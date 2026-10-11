@@ -7,10 +7,10 @@ extends Control
 @onready var fail_msg: Label = $BG/failMSG
 
 const LINES := [
-	"technically you fit",
-	"close enough",
-	"geometry: undefeated",
-	"you left some of yourself behind",
+	"cockroach in your food!",
+	"Mess ka paneer uff :(",
+	#"geometry: undefeated",
+	#"you left some of yourself behind",
 ]
 
 func _ready() -> void:

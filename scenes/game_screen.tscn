@@ -151,4 +151,16 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_2yu03")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5vo8s")
 text = "MAIN MENU"
 
+[node name="promptMSG" type="Label" parent="." unique_id=1358480056]
+offset_left = 274.2471
+offset_top = 881.4928
+offset_right = 1638.2471
+offset_bottom = 980.4928
+theme_override_colors/font_color = Color(0.9411765, 0.78431374, 0.4, 1)
+theme_override_fonts/font = ExtResource("11_mjl5p")
+theme_override_font_sizes/font_size = 50
+text = "FIND OUT WHAT HAPPENS WHEN YOU COLLIDE WITH A PILLAR
+SOMETHING CRAZYY "
+horizontal_alignment = 1
+
 [connection signal="pressed" from="menuBtn" to="." method="_on_menu_btn_pressed"]

@@ -15,12 +15,23 @@ var start_area := 0.0
 var alive := true
 
 var _view := Polygon2D.new()
+var _outline = Line2D.new()
 
 var frozen := true
 
 func _ready() -> void:
-	_view.color = Color("111010")
+	_view.color = Color.WHITE
+	_view.texture = preload("res://assets/bluedove_blob_120 (3).png")
+	_view.texture_offset = Vector2(SIZE,SIZE)
+	_view.texture_scale = Vector2.ONE
 	add_child(_view)
+	
+	_outline.width = 5.0
+	_outline.default_color = Color("f5a623")
+	_outline.closed = true 
+	_outline.joint_mode = Line2D.LINE_JOINT_ROUND
+	add_child(_outline)
+	
 	reset()
 
 
@@ -33,8 +44,8 @@ func reset() -> void:
 	vel = 0.0
 	alive = true
 	_view.polygon = poly
-
-
+	_outline.points = poly if poly.size() >= 3 else PackedVector2Array()
+	
 func _physics_process(delta: float) -> void:
 	if frozen or not alive:
 		return
@@ -81,6 +92,7 @@ func carve(solid: PackedVector2Array, xform: Transform2D) -> void:
 
 	poly = best
 	_view.polygon = poly
+	_outline.points = poly if poly.size() >= 3 else PackedVector2Array()
 
 	var lost := before - best_area
 	if lost > 1.0:
@@ -95,7 +107,9 @@ static func polygon_area(p: PackedVector2Array) -> float:
 	if p.size() < 3:
 		return 0.0
 	var a := 0.0
-	for i in p.size():
-		var q := p[(i + 1) % p.size()]
-		a += p[i].x * q.y - q.x * p[i].y
+	var g : PackedVector2Array
+	g = p
+	g.append(p[0])
+	for i in g.size() - 1:
+		a += g[i].x * g[i+1].y - g[i].y * g[i+1].x 
 	return absf(a) * 0.5
